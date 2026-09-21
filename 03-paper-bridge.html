@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>紙橋挑戰社：活動準備頁</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font: Noto Sans TC & Caveat for handwritten/craft style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#fcf8f2',
+            craft: '#e6d5b8',
+            craftdark: '#c4a482',
+            blueprint: '#1e3a8a',
+            ambercraft: '#d97706',
+          },
+          fontFamily: {
+            hand: ['Caveat', 'cursive'],
+            sans: ['Noto Sans TC', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #f4efe6;
+      background-image: 
+        linear-gradient(90deg, rgba(30, 58, 138, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(30, 58, 138, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Papercraft Shadow & Card style */
+    .paper-card {
+      background: #fcf8f2;
+      border: 2px solid #334155;
+      box-shadow: 4px 4px 0px #334155;
+      border-radius: 1rem;
+      transition: all 0.2s ease;
+    }
+    
+    .paper-card:hover {
+      box-shadow: 6px 6px 0px #334155;
+      transform: translateY(-2px);
+    }
+
+    .blueprint-card {
+      background: #1e3a8a;
+      color: #ffffff;
+      border: 2px solid #60a5fa;
+      box-shadow: 4px 4px 0px #1e293b;
+      border-radius: 1rem;
+      background-image: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 15px 15px;
+    }
+
+    /* Checkbox custom style */
+    .custom-checkbox {
+      width: 1.5rem;
+      height: 1.5rem;
+      accent-color: #2563eb;
+      cursor: pointer;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+      }
+    }
+  </style>
+</head>
+<body class="text-slate-800 min-h-screen pb-16">
+
+  <!-- Header Banner -->
+  <header class="bg-amber-500 border-b-4 border-slate-800 py-8 px-4 sm:px-8 relative overflow-hidden shadow-md">
+    <div class="max-w-5xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-center md:text-left">
+        <div class="inline-flex items-center gap-2 bg-slate-900 text-amber-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+          <i class="fa-solid fa-bridge"></i> STEAM 創客手作挑戰
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+          紙橋挑戰社：活動準備頁
+        </h1>
+        <p class="text-slate-900 text-base sm:text-lg font-bold mt-2 flex items-center justify-center md:justify-start gap-2">
+          <i class="fa-solid fa-lightbulb text-amber-900"></i>
+          我們要用簡單的材料，設計一座能承重的紙橋。
+        </p>
+      </div>
+
+      <!-- Quick Status Badge -->
+      <div class="bg-fcf8f2 border-2 border-slate-800 p-4 rounded-2xl shadow-[4px_4px_0px_#1e293b] flex items-center gap-4 text-slate-800">
+        <div class="text-center">
+          <div class="text-xs font-bold text-slate-500">準備完成度</div>
+          <div id="materials-progress-percent" class="text-2xl font-black text-blue-600">0%</div>
+        </div>
+        <div class="w-px h-8 bg-slate-300"></div>
+        <div class="text-center">
+          <div class="text-xs font-bold text-slate-500">小組分工</div>
+          <div id="roles-status-badge" class="text-xs font-bold bg-amber-200 text-amber-900 px-2 py-1 rounded-md mt-0.5">待填寫</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 mt-8 space-y-10">
+
+    <!-- 區塊一：要帶的材料 -->
+    <section class="paper-card p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-6 border-b-2 border-slate-200 pb-4">
+        <div>
+          <h2 class="text-2xl font-black text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-toolbox text-amber-600"></i> 區塊一：要帶的材料
+          </h2>
+          <p class="text-sm text-slate-600 mt-1">請在活動開始前檢查並準備好以下物品，勾選確認準備狀況：</p>
+        </div>
+        <!-- Progress Bar -->
+        <div class="w-full sm:w-48 bg-slate-200 h-4 rounded-full overflow-hidden border border-slate-400">
+          <div id="materials-progress-bar" class="bg-blue-600 h-full transition-all duration-300 w-0"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- A4 紙 3 張 -->
+        <label id="mat-card-1" class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-300 bg-white hover:border-blue-500 cursor-pointer transition">
+          <input type="checkbox" id="mat-1" onchange="updateMaterialsProgress()" class="custom-checkbox">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-2xl font-bold shrink-0">
+            <i class="fa-regular fa-file-lines"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 text-base">A4 紙 3 張</div>
+            <div class="text-xs text-slate-500">橋樑主體與結構材料</div>
+          </div>
+        </label>
+
+        <!-- 膠帶 1 卷 -->
+        <label id="mat-card-2" class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-300 bg-white hover:border-blue-500 cursor-pointer transition">
+          <input type="checkbox" id="mat-2" onchange="updateMaterialsProgress()" class="custom-checkbox">
+          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-2xl font-bold shrink-0">
+            <i class="fa-solid fa-tape"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 text-base">膠帶 1 卷</div>
+            <div class="text-xs text-slate-500">連接與黏貼固定橋面</div>
+          </div>
+        </label>
+
+        <!-- 積木 10 個 -->
+        <label id="mat-card-3" class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-300 bg-white hover:border-blue-500 cursor-pointer transition">
+          <input type="checkbox" id="mat-3" onchange="updateMaterialsProgress()" class="custom-checkbox">
+          <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 text-2xl font-bold shrink-0">
+            <i class="fa-solid fa-cubes"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 text-base">積木 10 個</div>
+            <div class="text-xs text-slate-500">承重測試用砝碼/重物</div>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <!-- 區塊二：挑戰步驟 -->
+    <section class="paper-card p-6 sm:p-8">
+      <div class="mb-6 border-b-2 border-slate-200 pb-4">
+        <h2 class="text-2xl font-black text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-blue-600"></i> 區塊二：挑戰步驟
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">按順序執行以下四個挑戰步驟，設計並測試你們的紙橋：</p>
+      </div>
+
+      <!-- Step Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <!-- Step 1 -->
+        <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-4 relative flex flex-col justify-between">
+          <div>
+            <span class="absolute -top-3 left-4 bg-amber-500 text-slate-900 font-black text-xs px-2.5 py-0.5 rounded-full border border-slate-800">STEP 1</span>
+            <div class="mt-2 font-bold text-amber-950 text-base flex items-center gap-2">
+              <i class="fa-solid fa-pen-ruler text-amber-700"></i> 先畫出紙橋草圖
+            </div>
+            <p class="text-xs text-slate-600 mt-1">討論紙條折法（如：拱橋、W型折頁、柱狀等）。</p>
+          </div>
+          <button onclick="scrollToCanvas()" class="mt-4 w-full py-1.5 bg-amber-200 hover:bg-amber-300 text-amber-900 font-bold text-xs rounded-lg border border-amber-400 transition">
+            前往草圖畫布 <i class="fa-solid fa-arrow-down"></i>
+          </button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 relative flex flex-col justify-between">
+          <div>
+            <span class="absolute -top-3 left-4 bg-blue-500 text-white font-black text-xs px-2.5 py-0.5 rounded-full border border-slate-800">STEP 2</span>
+            <div class="mt-2 font-bold text-blue-950 text-base flex items-center gap-2">
+              <i class="fa-solid fa-scissors text-blue-700"></i> 再折出橋面並固定
+            </div>
+            <p class="text-xs text-slate-600 mt-1">運用 A4 紙進行摺疊，使用適量膠帶固定結構。</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-4 relative flex flex-col justify-between">
+          <div>
+            <span class="absolute -top-3 left-4 bg-emerald-500 text-white font-black text-xs px-2.5 py-0.5 rounded-full border border-slate-800">STEP 3</span>
+            <div class="mt-2 font-bold text-emerald-950 text-base flex items-center gap-2">
+              <i class="fa-solid fa-weight-hanging text-emerald-700"></i> 逐一放上積木
+            </div>
+            <p class="text-xs text-slate-600 mt-1">將積木一個個輕放於橋面，觀察能承受的重量。</p>
+          </div>
+          <button onclick="scrollToRecord()" class="mt-4 w-full py-1.5 bg-emerald-200 hover:bg-emerald-300 text-emerald-900 font-bold text-xs rounded-lg border border-emerald-400 transition">
+            前往測試紀錄 <i class="fa-solid fa-arrow-down"></i>
+          </button>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-4 relative flex flex-col justify-between">
+          <div>
+            <span class="absolute -top-3 left-4 bg-purple-500 text-white font-black text-xs px-2.5 py-0.5 rounded-full border border-slate-800">STEP 4</span>
+            <div class="mt-2 font-bold text-purple-950 text-base flex items-center gap-2">
+              <i class="fa-solid fa-comments text-purple-700"></i> 記錄結果，討論改進
+            </div>
+            <p class="text-xs text-slate-600 mt-1">寫下倒塌原因或強固點，提出下一版本的改進方案。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊三：小組分工 -->
+    <section class="paper-card p-6 sm:p-8">
+      <div class="mb-6 border-b-2 border-slate-200 pb-4">
+        <h2 class="text-2xl font-black text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-users text-amber-600"></i> 區塊三：小組分工
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">好的團隊合作是成功關鍵！請指派組員擔任以下角色：</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 設計員 -->
+        <div class="bg-white rounded-xl p-5 border-2 border-slate-300 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="font-black text-lg text-amber-700 flex items-center gap-2">
+                <i class="fa-solid fa-compass-drafting"></i> 設計員
+              </span>
+              <span class="text-[11px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">任務 1</span>
+            </div>
+            <p class="text-xs font-semibold text-slate-700 mt-2">職責：畫出紙橋草圖</p>
+            <div class="mt-3 bg-amber-50 p-2.5 rounded-lg border border-amber-200 text-xs text-amber-900">
+              <i class="fa-solid fa-bullseye text-amber-600 mr-1"></i> 預計成果：<strong>一張草圖</strong>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">組員姓名：</label>
+            <input type="text" id="role-designer" placeholder="輸入設計員姓名" oninput="saveRoles()" class="w-full px-3 py-2 text-sm border-2 border-slate-300 rounded-lg focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <!-- 製作員 -->
+        <div class="bg-white rounded-xl p-5 border-2 border-slate-300 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="font-black text-lg text-blue-700 flex items-center gap-2">
+                <i class="fa-solid fa-hammer"></i> 製作員
+              </span>
+              <span class="text-[11px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">任務 2</span>
+            </div>
+            <p class="text-xs font-semibold text-slate-700 mt-2">職責：依照草圖組裝</p>
+            <div class="mt-3 bg-blue-50 p-2.5 rounded-lg border border-blue-200 text-xs text-blue-900">
+              <i class="fa-solid fa-bullseye text-blue-600 mr-1"></i> 預計成果：<strong>一座紙橋</strong>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">組員姓名：</label>
+            <input type="text" id="role-maker" placeholder="輸入製作員姓名" oninput="saveRoles()" class="w-full px-3 py-2 text-sm border-2 border-slate-300 rounded-lg focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+
+        <!-- 紀錄員 -->
+        <div class="bg-white rounded-xl p-5 border-2 border-slate-300 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="font-black text-lg text-emerald-700 flex items-center gap-2">
+                <i class="fa-solid fa-clipboard-list"></i> 紀錄員
+              </span>
+              <span class="text-[11px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">任務 3 & 4</span>
+            </div>
+            <p class="text-xs font-semibold text-slate-700 mt-2">職責：記錄測試結果</p>
+            <div class="mt-3 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200 text-xs text-emerald-900">
+              <i class="fa-solid fa-bullseye text-emerald-600 mr-1"></i> 預計成果：<strong>一份測試紀錄</strong>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">組員姓名：</label>
+            <input type="text" id="role-recorder" placeholder="輸入紀錄員姓名" oninput="saveRoles()" class="w-full px-3 py-2 text-sm border-2 border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 實用附加區塊：設計員線上繪圖白板 (Blueprint Interactive Sketchbook) -->
+    <section id="sketch-section" class="blueprint-card p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-4 border-b border-blue-400/40 pb-4">
+        <div>
+          <span class="text-amber-300 font-extrabold text-xs tracking-wider uppercase"><i class="fa-solid fa-pencil"></i> 設計員草圖繪製區</span>
+          <h2 class="text-2xl font-black text-white mt-1 flex items-center gap-2">
+            紙橋結構草圖畫布
+          </h2>
+        </div>
+
+        <!-- Canvas Controls -->
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <button onclick="setTool('pen')" id="btn-pen" class="px-3 py-1.5 bg-amber-400 text-slate-900 font-bold text-xs rounded-lg border border-amber-500 shadow hover:bg-amber-300 flex items-center gap-1">
+            <i class="fa-solid fa-pen"></i> 畫筆
+          </button>
+          <button onclick="setTool('eraser')" id="btn-eraser" class="px-3 py-1.5 bg-blue-900 text-blue-200 font-bold text-xs rounded-lg border border-blue-700 hover:bg-blue-800 flex items-center gap-1">
+            <i class="fa-solid fa-eraser"></i> 橡皮擦
+          </button>
+          <button onclick="clearCanvas()" class="px-3 py-1.5 bg-rose-600 text-white font-bold text-xs rounded-lg hover:bg-rose-700 transition flex items-center gap-1">
+            <i class="fa-solid fa-trash-can"></i> 清除重新畫
+          </button>
+        </div>
+      </div>
+
+      <!-- Canvas Area -->
+      <div class="relative bg-blue-950 rounded-xl overflow-hidden border-2 border-blue-400/60 shadow-inner">
+        <canvas id="sketchCanvas" class="w-full h-72 sm:h-96 cursor-crosshair block"></canvas>
+        <div class="absolute bottom-2 right-3 text-[11px] text-blue-300/70 font-mono pointer-events-none">
+          ENGINEERING DRAFTING CANVAS
+        </div>
+      </div>
+      <p class="text-xs text-blue-200/80 mt-2">提示：可以用滑鼠或觸控螢幕在此畫出結構想法（如：波浪折法、V字型支架等）。</p>
+    </section>
+
+    <!-- 實用附加區塊：積木承力紀錄表 (Testing & Improvement Log) -->
+    <section id="record-section" class="paper-card p-6 sm:p-8">
+      <div class="mb-6 border-b-2 border-slate-200 pb-4">
+        <span class="text-emerald-700 font-extrabold text-xs tracking-wider uppercase"><i class="fa-solid fa-clipboard-check"></i> 紀錄員測試區</span>
+        <h2 class="text-2xl font-black text-slate-900 mt-1 flex items-center gap-2">
+          積木承重測試與改進紀錄
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Input Form -->
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">紙橋設計折法 / 結構說明：</label>
+            <input type="text" id="log-structure" placeholder="例如：雙層波浪型摺頁 / 兩端加厚膠帶" class="w-full px-3 py-2 text-sm border-2 border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">成功承受積木數量 (最大 10 個)：</label>
+            <div class="flex items-center gap-3">
+              <input type="range" id="log-blocks" min="0" max="10" value="0" oninput="document.getElementById('block-count-disp').textContent = this.value" class="w-full accent-emerald-600">
+              <span class="font-black text-xl text-emerald-700 min-w-[3rem] text-right"><span id="block-count-disp">0</span> 個</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">觀察到的現象與倒塌原因分析：</label>
+            <textarea id="log-observation" rows="2" placeholder="例如：放到第 5 個積木時，橋面中間凹陷坍榻..." class="w-full px-3 py-2 text-sm border-2 border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">討論改進想法：</label>
+            <textarea id="log-improvement" rows="2" placeholder="例如：下次可以增加兩側的支撐柱，或把紙張摺得更密..." class="w-full px-3 py-2 text-sm border-2 border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+          </div>
+
+          <button onclick="addRecordLog()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-lg shadow-md transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-plus"></i> 新增測試紀錄數據
+          </button>
+        </div>
+
+        <!-- Record List View -->
+        <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-1.5 border-b border-slate-200 pb-2">
+              <i class="fa-solid fa-list-ol text-emerald-600"></i> 已記錄的測試結果列表
+            </h3>
+            <div id="logs-container" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+              <p class="text-xs text-slate-400 text-center py-8" id="empty-logs-msg">尚未新增測試紀錄，請於左側填寫後點擊新增。</p>
+            </div>
+          </div>
+
+          <!-- Print / Export Actions -->
+          <div class="mt-4 pt-3 border-t border-slate-200 flex gap-2 no-print">
+            <button onclick="window.print()" class="w-full py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs rounded-lg transition flex items-center justify-center gap-1.5 shadow">
+              <i class="fa-solid fa-print"></i> 列印活動準備紀錄表
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 z-50 border border-slate-700">
+    <i class="fa-solid fa-circle-check text-amber-400" id="toast-icon"></i>
+    <span id="toast-msg" class="text-sm font-medium">訊息通知</span>
+  </div>
+
+  <script>
+    // State management
+    const state = {
+      materials: {
+        mat1: false,
+        mat2: false,
+        mat3: false
+      },
+      roles: {
+        designer: '',
+        maker: '',
+        recorder: ''
+      },
+      logs: []
+    };
+
+    // Update Materials Checklist Progress
+    function updateMaterialsProgress() {
+      state.materials.mat1 = document.getElementById('mat-1').checked;
+      state.materials.mat2 = document.getElementById('mat-2').checked;
+      state.materials.mat3 = document.getElementById('mat-3').checked;
+
+      const checkedCount = Object.values(state.materials).filter(Boolean).length;
+      const percentage = Math.round((checkedCount / 3) * 100);
+
+      document.getElementById('materials-progress-bar').style.width = percentage + '%';
+      document.getElementById('materials-progress-percent').textContent = percentage + '%';
+
+      if (percentage === 100) {
+        showToast("太棒了！所有要帶的材料都已準備完畢！", "fa-solid fa-circle-check text-emerald-400");
+      }
+    }
+
+    // Save Team Roles
+    function saveRoles() {
+      state.roles.designer = document.getElementById('role-designer').value.trim();
+      state.roles.maker = document.getElementById('role-maker').value.trim();
+      state.roles.recorder = document.getElementById('role-recorder').value.trim();
+
+      const badge = document.getElementById('roles-status-badge');
+      const filledCount = Object.values(state.roles).filter(v => v.length > 0).length;
+
+      if (filledCount === 3) {
+        badge.textContent = '已完備';
+        badge.className = 'text-xs font-bold bg-emerald-200 text-emerald-900 px-2 py-1 rounded-md mt-0.5';
+      } else if (filledCount > 0) {
+        badge.textContent = `分配中 (${filledCount}/3)`;
+        badge.className = 'text-xs font-bold bg-amber-200 text-amber-900 px-2 py-1 rounded-md mt-0.5';
+      } else {
+        badge.textContent = '待填寫';
+        badge.className = 'text-xs font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md mt-0.5';
+      }
+    }
+
+    // Smooth Scroll Helper
+    function scrollToCanvas() {
+      document.getElementById('sketch-section').scrollIntoView({ behavior: 'smooth' });
+    }
+    function scrollToRecord() {
+      document.getElementById('record-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Toast Notification
+    function showToast(msg, iconClass = "fa-solid fa-circle-info text-amber-400") {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      document.getElementById('toast-icon').className = iconClass;
+
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    // Blueprint Canvas Logic
+    const canvas = document.getElementById('sketchCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let currentTool = 'pen'; // 'pen' or 'eraser'
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      drawGrid();
+    }
+
+    function drawGrid() {
+      // Draw Blueprint grid
+      ctx.strokeStyle = 'rgba(96, 165, 250, 0.15)';
+      ctx.lineWidth = 1;
+
+      const step = 20;
+      for (let x = 0; x < canvas.width; x += step) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += step) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    }
+
+    function setTool(tool) {
+      currentTool = tool;
+      const btnPen = document.getElementById('btn-pen');
+      const btnEraser = document.getElementById('btn-eraser');
+
+      if (tool === 'pen') {
+        btnPen.className = "px-3 py-1.5 bg-amber-400 text-slate-900 font-bold text-xs rounded-lg border border-amber-500 shadow hover:bg-amber-300 flex items-center gap-1";
+        btnEraser.className = "px-3 py-1.5 bg-blue-900 text-blue-200 font-bold text-xs rounded-lg border border-blue-700 hover:bg-blue-800 flex items-center gap-1";
+      } else {
+        btnEraser.className = "px-3 py-1.5 bg-amber-400 text-slate-900 font-bold text-xs rounded-lg border border-amber-500 shadow hover:bg-amber-300 flex items-center gap-1";
+        btnPen.className = "px-3 py-1.5 bg-blue-900 text-blue-200 font-bold text-xs rounded-lg border border-blue-700 hover:bg-blue-800 flex items-center gap-1";
+      }
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawGrid();
+      showToast("草圖畫布已清除重新繪製", "fa-solid fa-trash-can text-amber-400");
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pos = getPos(e);
+
+      if (currentTool === 'pen') {
+        ctx.strokeStyle = '#fef08a'; // Blueprint yellow ink
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      } else { // Eraser
+        ctx.clearRect(pos.x - 10, pos.y - 10, 20, 20);
+        // Redraw grid slice
+        drawGrid();
+      }
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    // Event Listeners for Drawing
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
+
+    canvas.addEventListener('touchstart', startDrawing, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDrawing);
+
+    window.onload = function() {
+      resizeCanvas();
+    };
+
+    // Add Testing Record Log
+    function addRecordLog() {
+      const struct = document.getElementById('log-structure').value.trim();
+      const blocks = parseInt(document.getElementById('log-blocks').value);
+      const obs = document.getElementById('log-observation').value.trim();
+      const imp = document.getElementById('log-improvement').value.trim();
+
+      if (!struct) {
+        showToast("請輸入紙橋折法或結構說明！", "fa-solid fa-triangle-exclamation text-rose-400");
+        return;
+      }
+
+      const logItem = {
+        id: Date.now(),
+        struct,
+        blocks,
+        obs: obs || '無備註',
+        imp: imp || '無討論想法',
+        time: new Date().toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' })
+      };
+
+      state.logs.push(logItem);
+      renderLogs();
+
+      // Reset form
+      document.getElementById('log-structure').value = '';
+      document.getElementById('log-blocks').value = 0;
+      document.getElementById('block-count-disp').textContent = '0';
+      document.getElementById('log-observation').value = '';
+      document.getElementById('log-improvement').value = '';
+
+      showToast("成功新增一筆測試紀錄！", "fa-solid fa-circle-check text-emerald-400");
+    }
+
+    function renderLogs() {
+      const container = document.getElementById('logs-container');
+      const emptyMsg = document.getElementById('empty-logs-msg');
+
+      if (state.logs.length === 0) {
+        if (emptyMsg) emptyMsg.style.display = 'block';
+        container.innerHTML = '<p class="text-xs text-slate-400 text-center py-8" id="empty-logs-msg">尚未新增測試紀錄，請於左側填寫後點擊新增。</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      state.logs.forEach((log, index) => {
+        const item = document.createElement('div');
+        item.className = "bg-white p-3 rounded-lg border border-slate-300 shadow-sm text-xs space-y-1 relative";
+        item.innerHTML = `
+          <div class="flex items-center justify-between font-bold text-slate-800 border-b border-slate-100 pb-1">
+            <span class="text-emerald-700">#${index + 1} 折法：${log.struct}</span>
+            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full text-[10px]">積木：${log.blocks} 個</span>
+          </div>
+          <div class="text-slate-600"><span class="font-semibold text-slate-700">現象分析：</span>${log.obs}</div>
+          <div class="text-slate-600"><span class="font-semibold text-slate-700">改進想法：</span>${log.imp}</div>
+          <button onclick="deleteLog(${log.id})" class="text-rose-500 hover:text-rose-700 text-[10px] mt-1 inline-block no-print">刪除此筆</button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function deleteLog(id) {
+      state.logs = state.logs.filter(l => l.id !== id);
+      renderLogs();
+      showToast("已刪除紀錄", "fa-solid fa-trash-can text-amber-400");
+    }
+  </script>
+</body>
+</html>
