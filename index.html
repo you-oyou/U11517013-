@@ -1,92 +1,92 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人作品集</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
-        header { background: #24292e; color: #fff; padding: 40px 20px; text-align: center; }
-        header h1 { margin: 0 0 10px; font-size: 2.5rem; }
-        header p { margin: 0; color: #d1d5db; font-size: 1.2rem; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        section { background: #fff; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        h2 { border-bottom: 2px solid #eaeaea; padding-bottom: 10px; color: #24292e; }
-        
-        /* 作品卡片樣式 */
-        .project-item { 
-            border-left: 4px solid #0366d6; 
-            padding-left: 15px; 
-            margin: 20px 0; 
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .project-item.clickable {
-            cursor: pointer;
-            padding: 15px;
-            background: #fafbfc;
-            border-radius: 0 8px 8px 0;
-        }
-        .project-item.clickable:hover {
-            transform: translateX(5px);
-            background: #f1f8ff;
-        }
-        .project-item a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        .project-item h3 {
-            margin-top: 0;
-            color: #0366d6;
-        }
-
-        footer { text-align: center; padding: 20px; color: #666; font-size: 0.9rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的探索與學習作品集</title>
+  <!-- 載入 Tailwind CSS 提升美觀 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 載入 FontAwesome 圖示 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+  </style>
 </head>
-<body>
-
-    <header>
-        <h1>你好，我是李宥頡</h1>
-        <p>大一新鮮人 ｜ 持續學習中的開發者 / 設計師</p>
+<body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    
+    <!-- 標題區域 -->
+    <header class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+        探索與學習作品集
+      </h1>
+      <p class="text-slate-600 text-lg">
+        點擊下方主題標題即可進入對應的活動網頁：
+      </p>
     </header>
 
-    <div class="container">
-        <section>
-            <h2>關於我</h2>
-            <p>歡迎來到我的個人作品集網站！目前正就讀大學一年級，對各項專業領域充滿熱情，持續累積作品與實戰經驗，目標在畢業時成為具備即戰力的專業人才。</p>
-        </section>
-
-        <section>
-            <h2>精選作品</h2>
-            
-            <!-- 新增的數位科技概論作業卡片 -->
-            <div class="project-item clickable">
-                <a href="tech-hw.html">
-                    <h3>數位科技概論作業</h3>
-                    <p>記錄數位科技概論課程的各項作業、報告與心得分享。點擊檢視詳細內容 &rarr;</p>
-                </a>
+    <!-- 連結列表區塊 -->
+    <main class="space-y-4">
+      
+      <!-- 連結 1 -->
+      <a href="./01-water-life.html" class="block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-md hover:border-blue-500 transition-all group">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              <i class="fa-solid fa-droplet"></i>
             </div>
-
-            <div class="project-item">
-                <h3>作品一：期末專題名稱</h3>
-                <p>這是使用 HTML/CSS 製作的響應式網頁，展示了基礎的排版與互動設計。</p>
+            <div>
+              <h2 class="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+                水與生活：小小科學探索日
+              </h2>
+              <p class="text-sm text-slate-500 mt-0.5">一起從生活中的水，發現科學的有趣之處。</p>
             </div>
-            <div class="project-item">
-                <h3>作品二：程式設計練習</h3>
-                <p>透過演算法與邏輯訓練完成的小工具或程式碼範例。</p>
+          </div>
+          <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+        </div>
+      </a>
+
+      <!-- 連結 2 -->
+      <a href="./02-nature-card.html" class="block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-md hover:border-emerald-500 transition-all group">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              <i class="fa-solid fa-leaf"></i>
             </div>
-        </section>
+            <div>
+              <h2 class="text-xl font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">
+                校園自然觀察任務卡
+              </h2>
+              <p class="text-sm text-slate-500 mt-0.5">用眼睛觀察，也用文字記錄葉脈與花朵觀察發現。</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all"></i>
+        </div>
+      </a>
 
-        <section>
-            <h2>聯絡方式</h2>
-            <p>Email: your.email@example.com</p>
-            <p>GitHub: <a href="https://github.com/" target="_blank">你的 GitHub 連結</a></p>
-        </section>
-    </div>
+      <!-- 連結 3 -->
+      <a href="./03-paper-bridge.html" class="block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-md hover:border-amber-500 transition-all group">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-amber-500 group-hover:text-white transition-colors">
+              <i class="fa-solid fa-bridge"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-slate-800 group-hover:text-amber-600 transition-colors">
+                紙橋挑戰社：活動準備頁
+              </h2>
+              <p class="text-sm text-slate-500 mt-0.5">STEAM 創客手作，用簡單材料設計承重紙橋。</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-amber-600 group-hover:translate-x-1 transition-all"></i>
+        </div>
+      </a>
 
-    <footer>
-        <p>&copy; 2026 [你的名字]. All Rights Reserved.</p>
-    </footer>
+    </main>
 
+  </div>
 </body>
-</html>.
+</html>
